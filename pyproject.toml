@@ -5,7 +5,9 @@ description = "영화진흥위원회 영화 순위 데이터 처리"
 authors = [
     {name = "HaramSs", email = "haram8274@gmail.com"},
 ]
-dependencies = []
+dependencies = [
+    "requests>=2.32.3",
+]
 requires-python = ">=3.9"
 readme = "README.md"
 license = {text = "MIT"}
@@ -15,6 +17,11 @@ license = {text = "MIT"}
 [tool.pdm]
 distribution = false
 
+[tool.pdm.dev-dependencies]
+test = [
+    "pytest>=8.3.2",
+    "pytest-cov>=5.0.0",
+]
 [project.scripts]
 mov-ping = 'movie.cli:ping'
 
