@@ -1,9 +1,13 @@
-from src.movie.api.call import gen_url, req, get_key, req2list, list2df 
+from src.movie.api.call import gen_url, req, get_key, req2list, list2df, save2df 
 import pandas as pd
+
+def test_save2df():
+    df = save2df()
+    assert isinstance(df, pd.DataFrame)
+    assert 'load_dt' in df.columns 
 
 def test_list2df():
     df = list2df()
-    print(df)
     assert isinstance(df, pd.DataFrame)
     assert 'rnum' in df.columns
     assert 'openDt' in df.columns
@@ -28,7 +32,6 @@ def test_req():
     code, data = req('20230101')
     assert code == 200
 
-    print(data)
 
 def test_req2list():
     l = req2list()
