@@ -1,15 +1,33 @@
 [project]
 name = "movie"
-version = "0.1.0"
-description = "Default template for PDM package"
+version = "0.2.1"
+description = "영화진흥위원회 영화 순위 데이터 처리"
 authors = [
     {name = "HaramSs", email = "haram8274@gmail.com"},
 ]
-dependencies = []
-requires-python = "==3.11.*"
+dependencies = [
+    "requests>=2.32.3",
+    "pandas>=2.2.2",
+    "numpy>=2.0.1",
+    "pyarrow>=17.0.0",
+]
+requires-python = ">=3.9"
 readme = "README.md"
 license = {text = "MIT"}
 
 
+
 [tool.pdm]
 distribution = false
+
+[tool.pdm.dev-dependencies]
+test = [
+    "pytest>=8.3.2",
+    "pytest-cov>=5.0.0",
+]
+[project.scripts]
+mov-ping = 'movie.cli:ping'
+
+[project.urls]
+Homepage ="https://github.com/HaramSs/movie/"
+Issues = "https://github.com/HaramSs/movie.issues"
