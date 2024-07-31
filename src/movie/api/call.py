@@ -24,9 +24,18 @@ def save2df(load_dt='20120101', url_param={}):
     df = list2df(load_dt, url_param)
     # df 에 load_dt 컬럼 추가 (조회 일자 YYYYMMDD 형식으로)
     # 아래 파일 저장시 load_dt 기본으로 파티셔닝
-    df['load_dt']= load_dt
+
+    partition = [
+        'load_dt'
+    ]
+
+    for k, v in url_params.items():
+        df[k] = v
+        partition.append(k)
+
+    df['load_dt'] = load_dt
     print(df.head(5))
-    df.to_parquet('~/tmp/test_parquet', partition_cols=['load_dt'])
+    df.to_parquet('~/tmp/test_parquet', partition_cols=partition)
     return df
 
 def list2df(load_dt='20120101', url_param={}):
