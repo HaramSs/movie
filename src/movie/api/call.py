@@ -28,8 +28,8 @@ def save2df(load_dt='20120101', url_param={}):
     partition = [
         'load_dt'
     ]
-
-    for k, v in url_params.items():
+    
+    for k, v in url_param.items():
         df[k] = v
         partition.append(k)
 
